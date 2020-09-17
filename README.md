@@ -2,7 +2,7 @@
 This is my adventure in trying to restore a word processor from 1981 to working condition. At this time, it is not currently working. It powers on, but it does not pass its power-on tests and does not currently get far enough to even attempt to load its system software from the floppy disks.
 
 ## Acquisition and a Mission
-In early September 2020 I stumbled across a Facebook Marketplace post titled: "[Old computer setup processor monitor wang 40 dollars estate find](images/fb_marketplace.png)". I love old hardware, and already own a few other vintage systems, so I wasn't going to pass this one up. I've heard of the Wang company in the past, but I've never actually gotten my hands on one. (The "wang" jokes just write  themselves, don't they?)
+In early September 2020 I stumbled across a Facebook Marketplace post titled: "[Old computer setup processor monitor wang 40 dollars estate find](images/fb_marketplace.png)". I love old hardware, and already own a few other vintage systems, so I wasn't going to pass this one up. I've heard of the [Wang](https://en.wikipedia.org/wiki/Wang_Laboratories) company in the past, but I've never actually gotten my hands on one. (The "wang" jokes just write  themselves, don't they?)
 
 I messaged the guy on Facebook Marketplace, and later that night I met him at his storage unit to pick it up. It was in serious need of a cleaning and smelled like it spent the last 30 years in a basement. But it came with _everything_. Cables, system disks, user and technical service manuals, etc.
 
@@ -10,6 +10,12 @@ What I couldn't find was any information about this on the internet. Searching G
 
 Given the lack of information about this machine I'll be doing my best to document as much as I can about it as I can and hopefully get it working in the process. I'll be periodically updating the work log below as best I can. If I fall out of touch with this repo feel free to reach out to me on Twitter, Reddit, or where ever else you can find me.
 
+## Contact Me, Please!
+I can't seem to find any information about this machine on the internet beyond a single line-item in a PDF of a parts catalog.
+
+If you've used this model of word processor, know anything about it, or have any suggestions on how I can better diagnose what may be wrong with it, I'd love to hear from you.
+
+You can reach out to me via any of the accounts used in the posts under the _Links_ section below or via Twitter.
 
 # Links
 * [Photo Album (Google Photos)](https://photos.app.goo.gl/h5TvAR3F5gg16o3e6)
