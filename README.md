@@ -48,6 +48,7 @@ The `-xc000` flag was key and took me a few minutes to realize why I couldn't fo
 The binary and disassembled ROM can be found here:
 
 * Binary: [roms/rom_l59.bin](roms/rom_l59.bin)
+* Hexdump: [roms/rom_l59.hex](roms/rom_l59.hex)
 * Disassembled: [roms/rom_l59.z80](roms/rom_l59.z80)
 
 ## 2020-09
