@@ -25,6 +25,28 @@ You can reach out to me via any of the accounts used in the posts under the _Lin
 
 # Work Log
 
+## 2020-09-19
+Been spending some time the past few days going thorugh the service manual. I've got my bearings now, and can generally find where a component is located within the schematics without too much trouble.
+
+
+### Power Supply Tests
+I didn't note this in an earlier update, but I did go thorugh all of the power supply outputs and confirmed they are all up to spec. The service manual contained a nicely detailed table containing the expected voltages and tolerances for each pin going into the motherboard, and everything was up to spec.
+
+```
++5V (4.75 -to- 5.25Vdc)          J1 Printer PCA pin 1, ground pin 3
++12V (11.40 -to- 12.60Vdc)       J1 Printer PCA pin 5, ground pin 3
+-5V (-4.75 -to- -5.10Vdc)        J1 Printer PCA pin 7, ground pin 3
+-12V (-11.76 -to- -12.24Vdc)     J1 Printer PCA pin 9, ground pin 3
++18V (+14.00 -to- 21.00Vdc)      J3 Printer PCA pin 1, ground pin 3
++36V (+28.00 -to- 42.00Vdc)      J3 Printer PCA pin 5, ground pin 3
+```
+
+### Chips' (testing) Challenge
+The system bootup says that the error message is coming from CPU board, so most of my testing has been focused on there. Every removable chip has been removed and re-seated. Contacts have been cleaned as well. No changes there.
+
+I'm slowly going through all of the chips on the CPU board, verifying at the very least that they're getting the expected voltage on the their +5V pins.
+
+
 ## 2020-09-15
 Dumped the boot PROM from the middle motherboard. PROM chip is a Hitachi HN462716G; was able to get it dumped using XGPro with a TL866Plus EEPROM reader/writer. 
 
@@ -63,3 +85,13 @@ The display reads a "7", indicating:
 | Error Code | PCA      | FRU                                            |
 |------------|----------|------------------------------------------------|
 | 7          | CPU 7777 | CPU UART OR PIO, KEYBOARD CABLE, KEYBOARD UART |
+
+
+# References
+
+Datasheets and stuff. These are here mostly for my own reference.
+
+## Datasheets
+* [Z80A CPU](https://www.zilog.com/manage_directlink.php?filepath=docs/z80/um0080&extn=.pdf)
+* [HN462716G EEPROM](https://pdf1.alldatasheet.com/datasheet-pdf/view/116083/HITACHI/HN462716G.html)
+* [uPD416C-2 16K x 1-Bit RAM](https://www.datasheets360.com/pdf/1852544526355807954)
