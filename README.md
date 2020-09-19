@@ -96,3 +96,4 @@ Datasheets and stuff. These are here mostly for my own reference.
 * [HN462716G EEPROM](https://pdf1.alldatasheet.com/datasheet-pdf/view/116083/HITACHI/HN462716G.html)
 * [uPD416C-2 16K x 1-Bit RAM](https://www.datasheets360.com/pdf/1852544526355807954)
 * [Intel P8272 Floppy Disk Controller](https://datasheetspdf.com/pdf-file/627488/IntelCorporation/8272/1)
+* [D3-6402-9 UART](https://datasheetspdf.com/datasheet/D3-6402R-9Z.html) (Not an exact match, but seems to be a compatible chip. Why was this one so hard to find a datasheet for?)
