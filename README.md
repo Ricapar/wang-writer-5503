@@ -95,3 +95,4 @@ Datasheets and stuff. These are here mostly for my own reference.
 * [Z80A CPU](https://www.zilog.com/manage_directlink.php?filepath=docs/z80/um0080&extn=.pdf)
 * [HN462716G EEPROM](https://pdf1.alldatasheet.com/datasheet-pdf/view/116083/HITACHI/HN462716G.html)
 * [uPD416C-2 16K x 1-Bit RAM](https://www.datasheets360.com/pdf/1852544526355807954)
+* [Intel P8272 Floppy Disk Controller](https://datasheetspdf.com/pdf-file/627488/IntelCorporation/8272/1)
