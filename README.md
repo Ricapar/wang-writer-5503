@@ -25,12 +25,69 @@ You can reach out to me via any of the accounts used in the posts under the _Lin
 
 # Work Log
 
+## 2020-09-19 (Part 2)
+I spent most of the afternoon reading through the manual again. Less looking at schematics, more reading details. Found the output address table! At the very end of the table is how the 7-segment error display at the end is controlled:
+
+```
+ADDRESS       DATA
+
+5F       Error Display (7 Segment)
+              0 A (L)
+              1 F (L)
+              2 E (L)
+              3 D (L)
+              4 C (L)
+              5 G (L)
+              6 B (L)
+              7 DP (L)
+```
+
+The `(L)` indicates that when those bits are set LOW, the display should have those segments lit up.
+
+On boot-up I was getting a "7" on the display. On a 7-segment display, that's segments A, B, and C. By the table in the manual, that means that bit positions 0, 4, and 6 should be LOW (0).
+
+
+```
+                              Binary     Hex
+Data:                1 0 1 0 1 1 1 0      AE
+7-Segment Position: DP B G C D E F A
+```
+
+A quick CTRL+F in the boot ROM found several sections like this:
+
+```
+XC4B3:
+	LD	A,$AE
+	OUT	($5F),A
+```
+
+Load hex `AE` into the A register, followed by outputting the A register into `5F`, the address that controls the 7-segment display. This instruction causes the 7-segment display to display what we would read as the number 7. This pattern is used throughout the ROM. Every write to `5F` always comes from the A register.
+
+My idea is that if I can follow through its execution and find the area of code that is identifying the fault, I can trace what it is actually testing and hopefully identify where the fault actually exists.
+
+Unfortunately, at some point during today's debugging and probing the display changed from displaying a 7 to displaying a 6.
+
+Same approach - figure out what segments would represent the number "6" and flip the right bits:
+
+```
+                              Binary     Hex
+Data:                1 1 0 0 0 0 0 0      C0
+7-Segment Position: DP B G C D E F A
+```
+
+A CTRL+F through the ROM finds four areas where a value of `C0` is written to the A register. That's too bad, because there was only one area where the previous value of `AE` was coming from.
+
+I'll be spending some more time digging through the ROM's code, seeing if I can trace where what section of code is triggering the write of `C0` to the 7-segment display.
+
+In the meantime I also ordered some replacement 2716 EEPROM chips. I don't want to risk breaking or wiping original one, but I'm thinking I may flash a replacement one with a modified copy of the boot ROM code and see what I can make it do. Maybe see if I can skip some checks for non-critical components or just make it do something else that's interesting. 
+
+
 ## 2020-09-19
-Been spending some time the past few days going thorugh the service manual. I've got my bearings now, and can generally find where a component is located within the schematics without too much trouble.
+I've been spending some time the past few days going through the service manual. I've got my bearings now, and can generally find where a component is located within the schematics without too much trouble.
 
 
 ### Power Supply Tests
-I didn't note this in an earlier update, but I did go thorugh all of the power supply outputs and confirmed they are all up to spec. The service manual contained a nicely detailed table containing the expected voltages and tolerances for each pin going into the motherboard, and everything was up to spec.
+I didn't note this in an earlier update, but I did go through all of the power supply outputs and confirmed they are all up to spec. The service manual contained a nicely detailed table containing the expected voltages and tolerances for each pin going into the motherboard, and everything was up to spec.
 
 ```
 +5V (4.75 -to- 5.25Vdc)          J1 Printer PCA pin 1, ground pin 3
@@ -45,7 +102,6 @@ I didn't note this in an earlier update, but I did go thorugh all of the power s
 The system bootup says that the error message is coming from CPU board, so most of my testing has been focused on there. Every removable chip has been removed and re-seated. Contacts have been cleaned as well. No changes there.
 
 I'm slowly going through all of the chips on the CPU board, verifying at the very least that they're getting the expected voltage on the their +5V pins.
-
 
 ## 2020-09-15
 Dumped the boot PROM from the middle motherboard. PROM chip is a Hitachi HN462716G; was able to get it dumped using XGPro with a TL866Plus EEPROM reader/writer. 
