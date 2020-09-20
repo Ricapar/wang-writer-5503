@@ -1,6 +1,6 @@
 # Wang Writer 5503 Restoration Project
 
-![Wang Writer 5503 with Keyboard and Monitor](images/wang-5503.jpg)
+![Wang Writer 5503 with Keyboard and Monitor](images/wang_5503.jpg)
 
 This is my adventure in trying to restore a word processor from 1981 to working condition. At this time, it is not currently working. It powers on, but it does not pass its power-on tests and does not currently get far enough to even attempt to load its system software from the floppy disks.
 
@@ -47,7 +47,11 @@ ADDRESS       DATA
 
 The `(L)` indicates that when those bits are set LOW, the display should have those segments lit up.
 
-On boot-up I was getting a "7" on the display. On a 7-segment display, that's segments A, B, and C. By the table in the manual, that means that bit positions 0, 4, and 6 should be LOW (0).
+Thankfully 7-segment displays seem to have pretty standard naming and ordering.
+
+![7 Segment Display](images/7_segment.png)
+
+On boot-up I was getting a "7" on the display. That's segments A, B, and C. By the table in the manual, that means that bit positions 0, 4, and 6 should be LOW (0).
 
 
 ```
