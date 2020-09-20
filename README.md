@@ -79,7 +79,9 @@ A CTRL+F through the ROM finds four areas where a value of `C0` is written to th
 
 I'll be spending some more time digging through the ROM's code, seeing if I can trace where what section of code is triggering the write of `C0` to the 7-segment display.
 
-In the meantime I also ordered some replacement 2716 EPROM chips. I don't want to risk breaking or wiping original one, but I'm thinking I may flash a replacement one with a modified copy of the boot ROM code and see what I can make it do. Maybe see if I can skip some checks for non-critical components or just make it do something else that's interesting. 
+In the meantime I also ordered some replacement 2716 EPROM chips. I don't want to risk breaking or wiping original one, but I'm thinking I may flash a replacement one with a modified copy of the boot ROM code and see what I can make it do. Maybe see if I can skip some checks for non-critical components or just make it do something else that's interesting.
+
+It'll probably get annoying to have to UV-wipe the EPROMs with any code changes I want to do, so I also ordered some EEPROMs. The pinouts are close, but not the same. I'll probably run it off of a breadboard with the adjusted pinout to get started - it should allow me to iterate quickly on any code changes. If I get something I intend to keep for a while maybe I'll take the time to burn it onto the EPROM. Or maybe I can make an adapter socket if I'm feeling adventurous :)
 
 
 ## 2020-09-19
