@@ -1,4 +1,7 @@
 # Wang Writer 5503 Restoration Project
+
+![Wang Writer 5503 with Keyboard and Monitor](images/wang-5503.jpg)
+
 This is my adventure in trying to restore a word processor from 1981 to working condition. At this time, it is not currently working. It powers on, but it does not pass its power-on tests and does not currently get far enough to even attempt to load its system software from the floppy disks.
 
 ## Acquisition and a Mission
