@@ -79,7 +79,7 @@ A CTRL+F through the ROM finds four areas where a value of `C0` is written to th
 
 I'll be spending some more time digging through the ROM's code, seeing if I can trace where what section of code is triggering the write of `C0` to the 7-segment display.
 
-In the meantime I also ordered some replacement 2716 EEPROM chips. I don't want to risk breaking or wiping original one, but I'm thinking I may flash a replacement one with a modified copy of the boot ROM code and see what I can make it do. Maybe see if I can skip some checks for non-critical components or just make it do something else that's interesting. 
+In the meantime I also ordered some replacement 2716 EPROM chips. I don't want to risk breaking or wiping original one, but I'm thinking I may flash a replacement one with a modified copy of the boot ROM code and see what I can make it do. Maybe see if I can skip some checks for non-critical components or just make it do something else that's interesting. 
 
 
 ## 2020-09-19
@@ -104,7 +104,7 @@ The system bootup says that the error message is coming from CPU board, so most 
 I'm slowly going through all of the chips on the CPU board, verifying at the very least that they're getting the expected voltage on the their +5V pins.
 
 ## 2020-09-15
-Dumped the boot PROM from the middle motherboard. PROM chip is a Hitachi HN462716G; was able to get it dumped using XGPro with a TL866Plus EEPROM reader/writer. 
+Dumped the boot PROM from the middle motherboard. PROM chip is a Hitachi HN462716G; was able to get it dumped using XGPro with a TL866Plus EPROM reader/writer. 
 
 The PROM dump contained some strings that seem to indicate that there may have been errors in reading the ROM. It's a 2K ROM chip, but according to the manual the ROM is wired into the bus at memory addresses 0xC000 thorugh 0xC400, indicating that it may only be actually mapping the first 1K of data out of the chip. The error is presented a bit past the 1K mark, so I'm not entirely sure if I'm already dead in the water with a PROM that's lost some bits over the last 40 years.
 
@@ -149,7 +149,7 @@ Datasheets and stuff. These are here mostly for my own reference.
 
 ## Datasheets
 * [Z80A CPU](https://www.zilog.com/manage_directlink.php?filepath=docs/z80/um0080&extn=.pdf)
-* [HN462716G EEPROM](https://pdf1.alldatasheet.com/datasheet-pdf/view/116083/HITACHI/HN462716G.html)
+* [HN462716G EPROM](https://pdf1.alldatasheet.com/datasheet-pdf/view/116083/HITACHI/HN462716G.html)
 * [uPD416C-2 16K x 1-Bit RAM](https://www.datasheets360.com/pdf/1852544526355807954)
 * [Intel P8272 Floppy Disk Controller](https://datasheetspdf.com/pdf-file/627488/IntelCorporation/8272/1)
 * [D3-6402-9 UART](https://datasheetspdf.com/datasheet/D3-6402R-9Z.html) (Not an exact match, but seems to be a compatible chip. Why was this one so hard to find a datasheet for?)
