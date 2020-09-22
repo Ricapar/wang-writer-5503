@@ -28,6 +28,32 @@ You can reach out to me via any of the accounts used in the posts under the _Lin
 
 # Work Log
 
+## 2020-09-20
+I'm going to table the rest of the boot ROM until the new EPROM/EEPROM chips arrive. I'm also restocking on breadboard jumper wires. Those have a knack for disappearing.
+
+The plan for the day was to use a spare Arduino Uno R3 to test some of the DRAM on the memory PCA. I had come across a number of posts across various vintage computing forums. A handful of links are available on the _Memory Testing Ideas_ section at the bottom of this page.
+
+![uPD416C-2 Pin Configuration](images/upd416.png)
+
+The uPD416C-2 chip is a 16Kx1 RAM chip. This means that the chip provides 16,384 possible addresses, and at each address you can store a single bit. Using the chip is a bit more complicated though. Looking at the pinout above, it only has 7 address lines (A0-A6). With 7 address lines you can you can only represent 7 bits at a time, which would limit you to only 128 addresses. To get 16K addresses the chip multiplexes those 7 address lines via timed latches on the RAS (Row Address Strobe) and CAS (Column Address Strobe) lines. This takes the the 128 possible addresses and multiplies it by another 128 possible addresses, giving us a total of 16,384.
+
+Putting aside the timing, the process to read an address would be:
+
+1. Set RAS, CAS, and WRITE to HIGH.
+1. Set the row address.
+1. Set RAS to LOW.
+1. Set the column address.
+1. Set CAS to LOW.
+1. Read the state of the DATA_OUT line.
+
+Easy enough, and most DRAM chips seem to work this way. This chip in particular has three voltage-in lines: +5v, +12v, and -5v.
+
+I have the breadboard all wired in and ready with the Arduino, but only after I had everything wired up and ready to go did I realize that I needed to supply the chip _with all three_ expected voltages. Unfortunately I can't do that directly off of the Arduino's power, so I'm going to need to power the chip and the Arduino off of a different power supply.
+
+Unfortunately by the time I realized this I was done tinkering for the day. I don't have inverter chips laying around, nor do I have a power supply laying around that outputs all +5v, +12v, and -5v at the same time. Once my extra jumper cables come in the plan will be to piggy-back off of the Wang's power supply, which does output all of those voltages (plus a few others) and power the Arduino off of that and see how the RAM testing goes.
+
+More to come!
+
 ## 2020-09-19 (Part 2)
 I spent most of the afternoon reading through the manual again. Less looking at schematics, more reading details. Found the output address table! At the very end of the table is how the 7-segment error display at the end is controlled:
 
@@ -108,14 +134,14 @@ I didn't note this in an earlier update, but I did go through all of the power s
 ```
 
 ### Chips' (testing) Challenge
-The system bootup says that the error message is coming from CPU board, so most of my testing has been focused on there. Every removable chip has been removed and re-seated. Contacts have been cleaned as well. No changes there.
+The system boot-up says that the error message is coming from CPU board, so most of my testing has been focused on there. Every removable chip has been removed and re-seated. Contacts have been cleaned as well. No changes there.
 
 I'm slowly going through all of the chips on the CPU board, verifying at the very least that they're getting the expected voltage on the their +5V pins.
 
 ## 2020-09-15
 Dumped the boot PROM from the middle motherboard. PROM chip is a Hitachi HN462716G; was able to get it dumped using XGPro with a TL866Plus EPROM reader/writer. 
 
-The PROM dump contained some strings that seem to indicate that there may have been errors in reading the ROM. It's a 2K ROM chip, but according to the manual the ROM is wired into the bus at memory addresses 0xC000 thorugh 0xC400, indicating that it may only be actually mapping the first 1K of data out of the chip. The error is presented a bit past the 1K mark, so I'm not entirely sure if I'm already dead in the water with a PROM that's lost some bits over the last 40 years.
+The PROM dump contained some strings that seem to indicate that there may have been errors in reading the ROM. It's a 2K ROM chip, but according to the manual the ROM is wired into the bus at memory addresses 0xC000 through 0xC400, indicating that it may only be actually mapping the first 1K of data out of the chip. The error is presented a bit past the 1K mark, so I'm not entirely sure if I'm already dead in the water with a PROM that's lost some bits over the last 40 years.
 
 ```
 00000720  5d 80 f1 e6 0f c6 90 27  ce 40 27 77 23 c9 4d 65  |]......'.@'w#.Me|
@@ -165,3 +191,8 @@ Datasheets and stuff. These are here mostly for my own reference.
 
 ## Z80 Stuff
 * [Z80 Assembly](http://tutorials.eeems.ca/Z80ASM/app1.htm)
+
+## Memory Testing Ideas
+* [Testing DRAM, one byte at a time](https://hackaday.com/2016/03/18/testing-dram-one-byte-at-a-time/)
+* [Arduino DRAM Tester](https://github.com/FozzTexx/DRAM-Tester/blob/master/Arduino-DRAM-tester.ino)
+* [DRAMARDUINO - Dram tester with Arduino](https://forum.defence-force.org/viewtopic.php?t=1699)
