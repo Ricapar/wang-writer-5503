@@ -28,6 +28,22 @@ You can reach out to me via any of the accounts used in the posts under the _Lin
 
 # Work Log
 
+## 2020-09-23
+### Preserving the Sacred Texts
+When I acquired this computer, it came with a pile of books and binders. One of those books was the "Product Maintenance Manual" from "Customer Engineering". It's safe to say that without this manual I'd have close to zero chance of getting this machine working again.
+
+As with most cases related to this machine, I have not found a single trace of the contents of this manual online. I wanted to make sure this had a chance at preservation though. I wanted a PDF copy of this book. 
+
+I vaguely remember the last time I used a scanner, and it wasn't a particularly great experience. I had inquired around locally for a service that can do bulk scanning, but it was either more money than I wanted to spend or way too far away. I bit the bullet and pulled out our old printer/fax/scanner/copier machine from the closet.
+
+I'll give a _huge_ credit to the developers of [NAPS2 (Not Another PDF Scanner 2)](https://www.naps2.com/). I originally thought "maybe I'll just do one chapter a day", assuming that this was going to be along and drawn out process. With NAPS2 I was able to control the scanner, set it to duplex scanning from the feed tray, and let it go. I did batches of 20-30 pages at a time. I had to fix a paper jam every now and then, but other than that the entire scanning process was a breeze. What I thought was going to take me a few weeks I did in about two hours. The PDF output even has OCR enabled.
+
+* [Wang Writer Model 5503 - Product Maintenance Manual](pdf/Wang%20Writer%20Model%205503%20-%20Product%20Maintenance%20Manual%20-%20Missing%20Schematics.pdf)
+
+The scan is not complete yet. It's probably missing one of the most important components: the system schematics. Unfortunately those are in double-wide fold-out pages that don't physically fit into the feed tray nor the flat-bed of the scanner. There aren't too many pages remaining, so I'll probably just do those with an app on my phone. That'll be a task for another day though.
+
+For now, I'm super excited to have gotten the majority of the book scanned in. Once I get the final schematics added in I'll see if this can be accepted into Archive.org's catalog.
+
 ## 2020-09-20
 I'm going to table the rest of the boot ROM until the new EPROM/EEPROM chips arrive. I'm also restocking on breadboard jumper wires. Those have a knack for disappearing.
 
