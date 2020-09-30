@@ -28,6 +28,23 @@ You can reach out to me via any of the accounts used in the posts under the _Lin
 
 # Work Log
 
+## 2020-09-29
+### A little help from the NSA?
+I had run the boot ROM through a disassembler when I first extracted it, and was able to get some brief insights into what it was doing just by manually tracing through the instructions. I originally had unsuccessfully tried to run it through [Ghidra](https://ghidra-sre.org/), the NSA's open-source software reverse engineering suite, to get a better picture of ROM's code. I've seen tools like IDA Pro used professionally, but I've never had a legitimate way to acquire it nor a use case that would warrant me purchasing a license. Ghidra, while seemingly rough around the edges, seems to have a decent community building around it, is free and open-source, and not all that difficult to get a feel for.
+
+I didn't get it working the first time around, but I went for a second round today after some encouragement. Turns out all I was missing was a _right click > decompile_ on the imported ROM! The resulting output was much more useful.
+
+With the ROM dump successfully loaded into Ghidra I was able to get a decent picture of the execution tree. I also went a bit further and drew up the I/O Address Table into the memory map (see: PDF page 236 on the maintenance manual, Appendix F-1) and mapped a few other addresses.
+
+![Boot ROM Function Graph](images/rom-function-graph.png)
+
+I've added the Ghidra project into the repo under [roms/ghidra/](roms/ghidra/).
+
+I'm still working through the function execution, but the decompiled output is immensely helpful in at least visually mapping out what what's going on. Based on function execution, there seems to be a pattern of blasting out a series of commands to certain pieces of hardware (or perhaps just initializing all of it?) then followed by reading some data back and comparing against certain expected values. 
+
+On other fronts, I'm still waiting on my additional EPROM and EEPROM chips so I can maybe bypass some of the hardware checks. At this point I don't really care if it can't initialize the printer, I'd just like to get something to show up on the screen!
+
+
 ## 2020-09-23
 ### Preserving the Sacred Texts
 When I acquired this computer, it came with a pile of books and binders. One of those books was the "Product Maintenance Manual" from "Customer Engineering". It's safe to say that without this manual I'd have close to zero chance of getting this machine working again.
