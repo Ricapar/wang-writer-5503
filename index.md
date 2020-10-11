@@ -1,10 +1,3 @@
-[
-  [« back to ricapar.net](https://ricapar.net/)
-  | [@Ricapar on Twitter](https://twitter.com/Ricapar)
-]
-
----
-
 # Wang Writer 5503 Restoration Project
 
 ![Wang Writer 5503 with Keyboard and Monitor](images/wang_5503.jpg)
